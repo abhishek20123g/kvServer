@@ -49,23 +49,29 @@ make build
 
 To start server and clients executable with rpc
 ```
-./server.o rpc
+./bin/server.o rpc
 # OR
-./server.o
+./bin/server.o
 ```
 separate command
 ```
-./client.o rpc
+./bin/client.o rpc
 # OR
-./client.o
+./bin/client.o
 ```
 
 To start server executable with grpc
 ```
-./server.o grpc
+./bin/server.o grpc
 ```
 separate command
 ```
-./client.o grpc
+./bin/client.o grpc
 ```
 
+To start node executable with grpc
+```
+./bin/node.o grpc
+# OR
+./bin/node.o rpc
+```

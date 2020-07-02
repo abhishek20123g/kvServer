@@ -26,15 +26,18 @@ generateproto:
 
 # Build the client and server file.
 build: clean generateproto
-	@echo "$(GREEN)[BUILD 1/2] Building server executable $(type) $(RESET)"
-	@go build -race -o server.o ./main/server.go
-	@echo "$(GREEN)[BUILD 2/2] Building client executable $(type) $(RESET)"
-	@go build -race -o client.o ./main/client.go
+	@echo "$(GREEN)[BUILD 1/3] Building server executable $(type) $(RESET)"
+	@go build -race -o ./bin/server.o ./main/server.go
+	@echo "$(GREEN)[BUILD 2/3] Building client executable $(type) $(RESET)"
+	@go build -race -o ./bin/client.o ./main/client.go
+	@echo "$(GREEN)[BUILD 3/3] Building node executable $(type) $(RESET)"
+	@go build -race -o ./bin/node.o ./main/node.go
+
 
 # Clean all binary files related to the server and client.
 # Clean all the proto generated files
 clean:
 	@echo "$(RED)[CLEAN 1/2] Cleaning all the binary files $(RESET)"
-	@rm -f *.o
+	@rm -rf bin/*.o
 	@echo "$(RED)[CLEAN 2/2] Cleaning all the proto files $(RESET)"
 	@rm -f ./grpcImp/*.pb.go
