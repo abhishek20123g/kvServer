@@ -25,7 +25,7 @@ func main() {
 		server = new(grpcImp.Server)
 	default:
 		fmt.Fprintf(
-			os.Stderr, "unknown method name is specified %s. Method name should be (rpc, grpc) only", methodName,
+			os.Stderr, "unknown method name is specified %s. Method name should be (rpc, grpc) only \n", methodName,
 			)
 		os.Exit(0)
 	}
@@ -35,13 +35,13 @@ func main() {
 	defer func() {
 		err = server.Close()
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "error in closing the Server: %s", err.Error())
+			fmt.Fprintf(os.Stderr, "error in closing the Server: %s \n", err.Error())
 			os.Exit(0)
 		}
 	}()
 
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "error while strating the Server: %s", err.Error())
+		fmt.Fprintf(os.Stderr, "error while strating the Server: %s \n", err.Error())
 		os.Exit(0)
 	}
 }

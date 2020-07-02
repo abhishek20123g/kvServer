@@ -36,8 +36,8 @@ func (kv *KVStorage) Get(key string) (string, error) {
 
 // Put updates the (key, value) pair in the storage.
 func (kv *KVStorage) Put(key, value string) error {
-	//kv.mutex.Lock()
-	//defer kv.mutex.Unlock()
+	kv.mutex.Lock()
+	defer kv.mutex.Unlock()
 
 	kv.data[key] = value
 	return nil

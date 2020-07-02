@@ -72,7 +72,7 @@ func main() {
 		}
 		_ = client.Close()
 		if err != nil {
-			fmt.Fprintf(os.Stderr, err.Error())
+			fmt.Fprintf(os.Stderr, "%s \n", err.Error())
 		}
 	}
 }

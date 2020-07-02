@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package grpcImp;
+
+option go_package=".;grpcImp";
+
+// PutArgs is the message used for update the value
+// of the key in KV server for the PUT command.
+message PutArgs {
+    string Key = 1;
+    string Value = 2;
+    string Message = 3;
+}
+
+// PutReply is the message used for the reply in the
+// PUT command in KV server.
+message PutReply {
+    string Err = 1;
+}
+
+// GetArgs is the message used to get the value corresponding
+// to the given key in KV server for the GET command.
+message GetArgs {
+    string Key = 1;
+    string Message = 2;
+}
+
+// GetReply is the message used for the reply in the
+// GET command in KV server.
+message GetReply {
+    string Value = 1;
+    string Err = 2;
+}
+
+// Services corresponding to the KV server.
+service KV {
+    // Put method updated the map value for the specific key.
+    rpc Put (PutArgs) returns (PutReply) {}
+    // Get method extract the value corresponding to specific key.
+    rpc Get (GetArgs) returns (GetReply) {}
+}
